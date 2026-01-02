@@ -25,7 +25,6 @@ class PaymentController extends Controller
 
         $order->load('items.product', 'items.bundle');
 
-        // 🔥 AMBIL TOTAL FINAL
         $gross = $order->total_after_promo ?? $order->total;
 
         \Log::info('MIDTRANS AMOUNT', [
@@ -35,11 +34,6 @@ class PaymentController extends Controller
             'gross_amount' => $gross,
         ]);
 
-        /**
-         * 🔴 PENTING:
-         * Jangan kirim item satu-satu dengan harga lama
-         * Midtrans bisa override gross_amount
-         */
         $items = [
             [
                 'id' => 'ORDER-' . $order->id,
