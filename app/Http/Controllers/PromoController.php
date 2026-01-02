@@ -5,9 +5,7 @@ use App\Models\Order;
 use App\Models\Bundle;
  use Illuminate\Support\Facades\Log;
 class PromoController extends Controller {
-    // menerima hasil scan KTM (misal: qrcode text = nim)
-  
-
+    
 public function claimPromo(Request $r, Order $order)
 {
     Log::info('PROMO START', [
