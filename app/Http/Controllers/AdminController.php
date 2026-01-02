@@ -54,7 +54,6 @@ class AdminController extends Controller
 
         $current = $order->status;
 
-        // rantai status: paid/pending -> processing -> ready -> completed (tidak bisa mundur)
         $canMove = match ($status) {
             'processing' => in_array($current, ['paid', 'pending']),
             'ready' => $current === 'processing',
